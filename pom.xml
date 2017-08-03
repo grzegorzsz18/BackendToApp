@@ -6,7 +6,6 @@
 	<groupId>com.application</groupId>
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>BackendToApp</name>
 	<description>services to mobile app</description>
@@ -60,6 +59,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>springApp</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

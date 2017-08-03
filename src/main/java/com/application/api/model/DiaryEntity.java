@@ -1,5 +1,7 @@
 package com.application.api.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,30 +13,71 @@ public class DiaryEntity {
 	@Id
 	@GeneratedValue
 	private long id;
+	String title;
+	int authorId;
+	Date date;
+	String text;
 	
-	String description;
 
-	public DiaryEntity(String description) {
-		this.description = description;
+	public DiaryEntity(String title, int authorId, Date date, String text) {
+		this.title = title;
+		this.authorId = authorId;
+		this.date = date;
+		this.text = text;
 	}
 
-	public String getDescription() {
-		return description;
+
+	public DiaryEntity() {
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	public DiaryEntity() {
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public int getAuthorId() {
+		return authorId;
+	}
+
+
+	public void setAuthorId(int author) {
+		this.authorId = authorId;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+	public String getText() {
+		return text;
+	}
+
+
+	public void setText(String text) {
+		this.text = text;
 	}
 	
 	

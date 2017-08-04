@@ -1,4 +1,4 @@
-package com.application.api.model;
+package com.application.api.diary;
 
 import java.util.Date;
 
@@ -57,7 +57,7 @@ public class DiaryEntity {
 
 
 	public void setAuthorId(int author) {
-		this.authorId = authorId;
+		this.authorId = author;
 	}
 
 

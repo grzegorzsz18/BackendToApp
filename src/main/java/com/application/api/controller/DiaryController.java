@@ -1,4 +1,4 @@
-package com.application.api.diary;
+package com.application.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.application.api.model.DiaryEntity;
+import com.application.api.diary.DiaryEntity;
 import com.application.api.service.DiaryServices;
 
-@Controller
+@RestController
 @RequestMapping("/diary")
 public class DiaryController {
 
@@ -25,7 +25,6 @@ public class DiaryController {
 	DiaryServices diaryServices;
 	
 	@RequestMapping(value = "/add", method = RequestMethod.PUT)
-	@ResponseBody
 	public DiaryEntity addDiary(@RequestBody DiaryEntity diaryEntity){
 		return diaryServices.addDiary(diaryEntity);
 	}

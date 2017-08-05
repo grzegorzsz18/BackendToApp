@@ -10,7 +10,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue
-	long id;
+	int id;
 	String login;
 	String name;
 	String surName;

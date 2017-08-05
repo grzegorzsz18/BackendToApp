@@ -12,14 +12,14 @@ public class DiaryEntity {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	String title;
-	int authorId;
+	String authorId;
 	Date date;
 	String text;
 	
 
-	public DiaryEntity(String title, int authorId, Date date, String text) {
+	public DiaryEntity(String title, String authorId, Date date, String text) {
 		this.title = title;
 		this.authorId = authorId;
 		this.date = date;
@@ -31,12 +31,12 @@ public class DiaryEntity {
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -51,12 +51,12 @@ public class DiaryEntity {
 	}
 
 
-	public int getAuthorId() {
+	public String getAuthorId() {
 		return authorId;
 	}
 
 
-	public void setAuthorId(int author) {
+	public void setAuthorId(String author) {
 		this.authorId = author;
 	}
 

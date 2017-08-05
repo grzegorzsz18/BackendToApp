@@ -19,11 +19,11 @@ public class DiaryServices {
 		return repo.save(entity);
 	}
 	
-	public List<DiaryEntity> getAllDiarysByUserId(int id){
+	public List<DiaryEntity> getAllDiarysByUserId(String id){
 		return  (List<DiaryEntity>) repo.findAllByAuthorId(id);
 	}
 	
-	public DiaryEntity getById(long id){
-		return repo.findOne(id);
+	public DiaryEntity getByIdAndToken(int id,String login){
+		return repo.findOneByAuthorIdAndId(login, id);
 	}
 }

@@ -23,13 +23,20 @@ public class UserController {
 	@Autowired
 	TokenService tokenService;
 	
-	@RequestMapping(value = "/get/{token}", method = RequestMethod.POST)
-	public ResponseEntity<User> getUserById(@PathVariable("token") String token){
-		User user = userService.getUserByToken(token);
-		if(user == null) {
-			return new ResponseEntity<User>(user,HttpStatus.NO_CONTENT);
+	@RequestMapping(value = "/logout/{login}", method = RequestMethod.POST)
+	public void logout(@PathVariable("login") String login) {
+		User user = userService.getUserByLogin(login);
+		userService.deleteUser(user);
+		user.setToken(tokenService.generateToken(user.getLogin()));
+		userService.addUser(user);
+	}
+	@RequestMapping(value = "/getToken/{login}", method = RequestMethod.GET)
+	public ResponseEntity<String> getTokenByUserName(@PathVariable("login") String login){
+		String token = userService.getTokenByLogin(login);
+		if(token == null) {
+			return new ResponseEntity<String>(token,HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<User>(user,HttpStatus.OK);
+		return new ResponseEntity<String>(token,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.PUT)

@@ -14,7 +14,7 @@ public class User {
 	String login;
 	String name;
 	String surName;
-	Date birthdate;
+	long birthdate;
 	String password;
 	String token;
 	
@@ -23,7 +23,7 @@ public class User {
 		
 	}
 	
-	public User(String login, String name, String surName, Date birthdate, String password) {
+	public User(String login, String name, String surName, long birthdate, String password) {
 		this.login = login;
 		this.name = name;
 		this.surName = surName;
@@ -49,10 +49,10 @@ public class User {
 	public void setSurName(String surName) {
 		this.surName = surName;
 	}
-	public Date getBirthdate() {
+	public long getBirthdate() {
 		return birthdate;
 	}
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(long birthdate) {
 		this.birthdate = birthdate;
 	}
 	public String getPassword() {

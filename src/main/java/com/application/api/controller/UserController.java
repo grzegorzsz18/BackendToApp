@@ -30,13 +30,13 @@ public class UserController {
 		user.setToken(tokenService.generateToken(user.getLogin()));
 		userService.addUser(user);
 	}
-	@RequestMapping(value = "/getToken/{login}", method = RequestMethod.GET)
-	public ResponseEntity<String> getTokenByUserName(@PathVariable("login") String login){
-		String token = userService.getTokenByLogin(login);
-		if(token == null) {
-			return new ResponseEntity<String>(token,HttpStatus.NO_CONTENT);
+	@RequestMapping(value = "/getToken", method = RequestMethod.POST)
+	public ResponseEntity<String> getTokenByUserName(@RequestBody User user){
+		User userOrg = userService.getUserByLogin(user.getLogin());
+		if(userOrg.getPassword().equals(user.getPassword())) {
+			return new ResponseEntity<String>(userService.getTokenByLogin(user.getLogin()),HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(token,HttpStatus.OK);
+		return new ResponseEntity<String>("",HttpStatus.NO_CONTENT);
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.PUT)

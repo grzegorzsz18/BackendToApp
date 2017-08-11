@@ -28,9 +28,12 @@ public class DiaryController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = "/add", method = RequestMethod.PUT)
-	public DiaryEntity addDiary(@RequestBody DiaryEntity diaryEntity){
-		return diaryServices.addDiary(diaryEntity);
+	@RequestMapping(value = "/add/{token}", method = RequestMethod.PUT)
+	public ResponseEntity<DiaryEntity> addDiary(@RequestBody DiaryEntity diaryEntity, @PathVariable("token") String token){
+		if(userService.getUserByToken(token) != null) {
+		return new ResponseEntity<DiaryEntity>(diaryServices.addDiary(diaryEntity),HttpStatus.OK);
+		}
+		return new ResponseEntity<DiaryEntity>(HttpStatus.NOT_FOUND);
 	}
 	
 	@RequestMapping(value = "/byId/{id}/{token}", method = RequestMethod.GET)

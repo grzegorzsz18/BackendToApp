@@ -26,4 +26,8 @@ public class DiaryServices {
 	public DiaryEntity getByIdAndToken(int id,String login){
 		return repo.findOneByAuthorIdAndId(login, id);
 	}
+	
+	public void removeById(int id) {
+		repo.delete(id);
+	}
 }

@@ -30,4 +30,8 @@ public class DiaryServices {
 	public void removeById(int id) {
 		repo.delete(id);
 	}
+	
+	public DiaryEntity getById(int id) {
+		return repo.findOneById(id);
+	}
 }

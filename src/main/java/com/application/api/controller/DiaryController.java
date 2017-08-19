@@ -32,6 +32,17 @@ public class DiaryController {
 	@Autowired
 	DiaryEntityConverter diaryConverter;
 	
+	@RequestMapping(value = "/delete/{token}", method = RequestMethod.POST)
+	public ResponseEntity<DiaryEntityDTO> deleteDiaryById(@RequestBody int diaryId, @PathVariable("token") String token){
+		String login = userService.getUserByToken(token).getLogin();
+		DiaryEntity diaryEntity = diaryServices.getById(diaryId);
+		if(login.equals(diaryEntity.getAuthorId())){
+			diaryServices.removeById(diaryEntity.getId());
+			return new ResponseEntity<DiaryEntityDTO>(diaryConverter.diaryEntityToDTO(diaryEntity), HttpStatus.OK);
+		}
+		return new ResponseEntity<DiaryEntityDTO>(diaryConverter.diaryEntityToDTO(diaryEntity),HttpStatus.FORBIDDEN);
+	}
+	
 	@RequestMapping(value = "/modify/{token}", method = RequestMethod.POST)
 		public ResponseEntity<DiaryEntityDTO> modifyDiaryByIdAndToken(@RequestBody DiaryEntity diaryEntity, @PathVariable("token") String token){
 		String login = userService.getUserByToken(token).getLogin();

@@ -18,11 +18,6 @@ public class UserService {
 		return repo.save(user);
 	}
 	
-	public String getTokenByLogin(String login) {
-		User user = repo.findOneByLogin(login);
-		return user.getToken();
-	}
-	
 	public void deleteUser(User user) {
 		repo.delete(user);
 	}

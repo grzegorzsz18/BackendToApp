@@ -17,19 +17,21 @@ public class User {
 	long birthdate;
 	String password;
 	String token;
+	String email;
 	
 	
 	public User() {
 		
 	}
 	
-	public User(String login, String name, String surName, long birthdate, String password) {
+	public User(String login, String name, String surName, long birthdate, String password, String email) {
 		this.login = login;
 		this.name = name;
 		this.surName = surName;
 		this.birthdate = birthdate;
 		this.password = password;
 		this.token = "0";
+		this.email = email;
 	}
 	public String getLogin() {
 		return login;
@@ -66,6 +68,14 @@ public class User {
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
